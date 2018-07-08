@@ -59,6 +59,7 @@ jrebel.lic
 *.sublime-*
 .cache
 .cache-main
+.cache-tests
 
 # intellij
 *.eml
