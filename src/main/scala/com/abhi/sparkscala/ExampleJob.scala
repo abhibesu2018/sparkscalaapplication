@@ -34,7 +34,7 @@ object ExampleJob {
   def main(args: Array[String]) {
     val transactionsIn = args(0)
     val usersIn = args(1)
-    val conf = new SparkConf().setAppName("SparkJoins").setMaster("local")
+    val conf = new SparkConf().setAppName("SparkJoins").set("spark.hadoop.validateOutputSpecs", "false")
     val context = new SparkContext(conf)
     val job = new ExampleJob(context)
     val results = job.run(transactionsIn, usersIn)
