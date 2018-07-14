@@ -32,8 +32,8 @@ class ExampleJob(sc: SparkContext) {
 
 object ExampleJob {
   def main(args: Array[String]) {
-    val transactionsIn = args(1)
-    val usersIn = args(0)
+    val transactionsIn = args(0)
+    val usersIn = args(1)
     val conf = new SparkConf().setAppName("SparkJoins").setMaster("local")
     val context = new SparkContext(conf)
     val job = new ExampleJob(context)
