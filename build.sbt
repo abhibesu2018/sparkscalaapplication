@@ -19,7 +19,8 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % "2.3.0",
   "org.apache.spark" %% "spark-sql" % "2.3.0",
   "org.apache.spark" %% "spark-mllib" % "2.3.0",
-  "org.apache.spark" %% "spark-streaming" % "2.3.0"
+  "org.apache.spark" %% "spark-streaming" % "2.3.0",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0"
 )
 
 enablePlugins(SbtTwirl)

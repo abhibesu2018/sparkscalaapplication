@@ -10,7 +10,7 @@
 config/database.yml
 log/*
 tmp/*
-
+*.log
 # java specific
 *.class
 

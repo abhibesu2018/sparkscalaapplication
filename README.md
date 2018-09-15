@@ -18,14 +18,13 @@ g8 scalatra/scalatra-sbt
 11.mkdir -p /tmp/spark-events
 12.cd /home/abhi/Downloads/spark-2.3.0-bin-hadoop2.7
 13. ./sbin/start-history-server.sh
-14. cd /home/abhi/eclipse-welcome/sparkscalaapplication/target/scala-2.12
-15. spark_submit --class com.abhi.sparkscala.ExampleJob --driver-java-options "-Dlog4j.configuration=file:/home/abhi/eclipse-welcome/sparkscalaapplication/driver_log4j.properties" --master yarn --deploy-mode cluster --driver-memory 1g --executor-memory 1g --executor-cores 1 sparkscalaapplication_2.11-0.1.0-SNAPSHOT.jar hdfs://localhost:9000/input/transactions.txt hdfs://localhost:9000/input/users.txt hdfs://localhost:9000/output 
-
+14. cd /home/abhi/eclipse-welcome/sparkscalaapplication/target/scala-2.11
+15. spark_submit --class com.abhi.sparkscala.ExampleJob --driver-memory 1g --executor-memory 1g --executor-cores 1 --num-executors 1 --driver-java-options "-Dlog4j.configuration=file:/home/abhi/eclipse-welcome/sparkscalaapplication/driver_log4j.properties" --master yarn --deploy-mode cluster sparkscalaapplication_2.11-0.1.0-SNAPSHOT.jar hdfs://localhost:9000/input/transactions.txt hdfs://localhost:9000/input/users.txt hdfs://localhost:9000/output
 #Spark submission command in LOCAL mode ->
 spark_submit --class com.abhi.sparkscala.ExampleJob --master local sparkscalaapplication_2.11-0.1.0-SNAPSHOT.jar hdfs://localhost:9000/input/transactions.txt hdfs://localhost:9000/input/users.txt hdfs://localhost:9000/output
 
 #Spark submission command in YARN mode (Please check the resources in the command)->
-spark_submit --class com.abhi.sparkscala.ExampleJob --driver-java-options "-Dlog4j.configuration=file:/home/abhi/eclipse-welcome/sparkscalaapplication/driver_log4j.properties" --master yarn --deploy-mode cluster --driver-memory 1g --executor-memory 1g --executor-cores 1 sparkscalaapplication_2.11-0.1.0-SNAPSHOT.jar hdfs://localhost:9000/input/transactions.txt hdfs://localhost:9000/input/users.txt hdfs://localhost:9000/output
+spark_submit --class com.abhi.sparkscala.ExampleJob --driver-memory 1g --executor-memory 1g --executor-cores 1 --num-executors 1 --driver-java-options "-Dlog4j.configuration=file:/home/abhi/eclipse-welcome/sparkscalaapplication/driver_log4j.properties" --master yarn --deploy-mode cluster sparkscalaapplication_2.11-0.1.0-SNAPSHOT.jar hdfs://localhost:9000/input/transactions.txt hdfs://localhost:9000/input/users.txt hdfs://localhost:9000/output
 
 ## REMOVE THE OUTPUT DIRECTORY for the next job submission  - otherwise will get FileAlreadyExistsException
 hadoop fs -rm -r hdfs://localhost:9000/output
