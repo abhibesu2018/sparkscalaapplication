@@ -11,15 +11,20 @@ class ExampleJob(sc: SparkContext) {
     val transactions = sc.textFile(t)
     val newTransactionsPair = transactions.map { t =>
       val p = t.split("\t")
+      println("Print transaction pairs.....")
+      println(p(2).toInt)
+      println(p(1).toInt)
       (p(2).toInt, p(1).toInt)
     }
 
     val users = sc.textFile(u)
     val newUsersPair = users.map { t =>
       val p = t.split("\t")
+      println("Print users pairs.....")
+      println(p(0).toInt)
+      println(p(3))
       (p(0).toInt, p(3))
     }
-
     val result = processData(newTransactionsPair, newUsersPair)
     return sc.parallelize(result.toSeq).map(t => (t._1.toString, t._2.toString))
   }
